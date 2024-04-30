@@ -52,7 +52,7 @@ jobs:
       - name: Test UTs
         run: |
           cd upstream
-          mvn test -DskipITs -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+          gradle --build-cache unitTest -PmaxParallelForks=32 -PignoreFailures=true
       - name: Upload Duration
         run: |
           python gha-add-rows.py
